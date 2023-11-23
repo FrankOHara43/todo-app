@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Checkbox from "./Checkbox";
 
-export default function Task({name,done,onToggle,onTrash}){
+export default function Task({name,done,onToggle,onTrash,onRename}){
    const[editMode, setEditMode] = useState(false);
 
    return(
@@ -12,8 +12,8 @@ export default function Task({name,done,onToggle,onTrash}){
       <div className="task-name" onClick={()=>setEditMode(prev=>!prev)}><span>{name}</span></div>
      )}
      {editMode && (
-       <form>
-         <input type="text" value={name}/>
+       <form onSubmit={ev => {ev.preventDefault();setEditMode(false)}}>
+         <input type="text" value={name} onChange={ev => onRename(ev.target.value) }/>
        </form>
      )}
      

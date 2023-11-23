@@ -54,7 +54,7 @@ function App() {
   }
 
   function renameTask(index,newName){
-    setTasks(prev=>{
+    setTasks(prev => {
       const newTasks = [...prev];
       newTasks[index].name = newName;
       return newTasks;
@@ -70,9 +70,9 @@ function App() {
       <TaskForm onAdd = {addTask}/>
       {tasks.map((task,index)=>(
         <Task{...task}
-        onRename={newName=>renameTask(index,newName)}
-        onTrash={() => removeTask(index)}
-         onToggle={done=>updateTaskDone(index,done)}/>
+              onRename={newName => renameTask(index,newName)}
+              onTrash={() => removeTask(index)}
+              onToggle={done=>updateTaskDone(index,done)}/>
       ))}
       
 
